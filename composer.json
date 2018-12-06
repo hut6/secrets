@@ -1,0 +1,18 @@
+{
+  "name": "hut6/secrets",
+  "license": "proprietary",
+  "description": "A library for Hut6 secrets",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Ryan Castle",
+      "email": "ryan@hutsix.com.au"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {},
+  "bin": [
+    "bin/op-secret-push",
+    "bin/op-secret-pull"
+  ]
+}
