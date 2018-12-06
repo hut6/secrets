@@ -12,7 +12,7 @@
   "minimum-stability": "stable",
   "require": {},
   "bin": [
-    "bin/op-secret-push",
-    "bin/op-secret-pull"
+    "bin/secret-push",
+    "bin/secret-pull"
   ]
 }
