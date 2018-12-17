@@ -7,7 +7,7 @@ A nicer way to keep our secrets.
 You'll need the 1Password CLI client `op` for push/pull and the `jq` binary for extracting the UUID from responses.
 
 ```
-brew cask install 1password-cli && brew install jq
+brew cask install 1password-cli jq
 ```
 
 ## Usage

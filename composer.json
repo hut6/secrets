@@ -3,6 +3,7 @@
   "license": "proprietary",
   "description": "A library for Hut6 secrets",
   "type": "library",
+  "version": "1.0.0",
   "authors": [
     {
       "name": "Ryan Castle",
