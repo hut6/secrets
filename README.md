@@ -1,40 +1,50 @@
 # hut6/secrets
 
-A nicer way to keep our secrets.
+A nicer way to manage our secrets.
 
 ## Setup
 
-You'll need the 1Password CLI client `op` for push/pull and the `jq` binary for extracting the UUID from responses.
+You'll need the 1Password CLI client `op` for push/pull. 
 
-```
-brew cask install 1password-cli && brew install jq
-```
+## Required files & directories
 
-## Usage
+You'll need to create a `/secrets` directory which will contain a `environment.env` file for each of your deployment environments, eg `production.env`, or `staging.env`
 
-You'll need to create a production .env file for example.
+You will also need a `/hosts.yml` inventory file (as per Deployer https://deployer.org/docs/hosts.html) with an additional `secrets_uuid` value for each host.
 
+## Install
 
-### Starting
-The first time you need a new production secret, you should create the file
-and push it.
 ```
 composer req --dev hut6/secrets
-echo "DATABASE_URL=mysql://user:password@localhost/name" > .env
-vendor/bin/secret-push .env # Creates `repository-name/.env` file in 1P
 ```
 
-### Updating
-After you make changes to production secrets file, you should push them.
+## Pushing to 1Password
+
+To push your file from the secrets directory to 1Password, run the following command.
+
 ```
-# Update .env file...
-vendor/bin/secret-push .env
+bin/secrets push production
 ```
 
-### Refreshing
-Other developers can update their production secrets like this. You
-should do this before every production deployment, or include it in your
-deploy script.
+Replace production with the right host key, as per your hosts.yml file. 
+
+The first time you run this command, it will ask you which vault needs to be used. 
+
+The same command can be used to update the entry in 1password after you make changes to production secrets file.
+
+## Pulling from 1Password
+
+This will pull the secrets file from 1password, using the UUID specified in hosts.yml, and add it to the secrets directory. 
+
 ```
-vendor/bin/secret-pull .env
+bin/secrets pull production 
 ```
+
+## Updating the docker secrets 
+
+This will load the secrets (from the secrets directory) into the docker daemon for the specified host. Containers likely will need restarting, and this command doesn't do this. 
+
+```
+bin/secrets load production 
+```
+

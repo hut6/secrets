@@ -1,18 +1,27 @@
 {
   "name": "hut6/secrets",
   "license": "proprietary",
-  "description": "A library for Hut6 secrets",
+  "description": "A library for HutSix secrets",
   "type": "library",
   "authors": [
     {
-      "name": "Ryan Castle",
-      "email": "ryan@hutsix.com.au"
+      "name": "HutSix",
+      "email": "team@hutsix.com.au"
     }
   ],
   "minimum-stability": "stable",
-  "require": {},
+  "require": {
+    "symfony/console": ">4",
+    "symfony/yaml": ">4",
+    "symfony/process": ">4",
+    "ext-json": "*",
+    "symfony/dotenv": "^5.0"
+  },
   "bin": [
     "bin/secret-push",
     "bin/secret-pull"
-  ]
+  ],
+  "require-dev": {
+    "symfony/var-dumper": ">4"
+  }
 }

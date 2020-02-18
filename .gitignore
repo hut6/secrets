@@ -1,1 +1,4 @@
-/vendor/
+/vendor
+/secrets
+/hosts.yml
+/VERSION
